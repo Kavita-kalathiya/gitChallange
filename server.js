@@ -6,6 +6,8 @@ const server = http.createServer((req, res) => {
   if (req.url === '/') return respondHello(req, res)
   if (req.url.match(/^\/b64\//)) return respondBase64(req, res)
   if (req.url === '/user-agent') return respondUserAgent(req, res)
+  if (req.url === '/user-agent') return respondUserAgent(req, res)
+
   res.end()
 })
 
@@ -21,6 +23,7 @@ function respondUserAgent(req, res) {
   const ua = req.headers['user-agent']
   res.end(JSON.stringify({ ua }))
 }
+
 
 server.listen(PORT)
 console.log(`Server listening on port ${PORT}`)
